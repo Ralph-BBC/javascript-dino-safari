@@ -1,0 +1,13 @@
+{
+  "name": "@dino-safari/module-02-functions",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Module 2 — Tracking Stations: scope, closures, this, modules",
+  "scripts": {
+    "test": "vitest run --root .",
+    "demo:closures": "node demo/01-closures.js",
+    "demo:this": "node demo/02-this-rules.js",
+    "demo:modules": "node demo/03-module-design.js"
+  }
+}

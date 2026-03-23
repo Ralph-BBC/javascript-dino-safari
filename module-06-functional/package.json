@@ -1,0 +1,13 @@
+{
+  "name": "@dino-safari/module-06-functional",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Module 6 — Migration Data Pipeline: immutability, composition, practical FP",
+  "scripts": {
+    "test": "vitest run --root .",
+    "demo:immutable": "node demo/01-immutability.js",
+    "demo:pipelines": "node demo/02-pipelines.js",
+    "demo:memoize": "node demo/03-memoization.js"
+  }
+}

@@ -1,0 +1,4 @@
+packages:
+  - 'module-*'
+  - 'slide-deck'
+  - 'module-*/slides'

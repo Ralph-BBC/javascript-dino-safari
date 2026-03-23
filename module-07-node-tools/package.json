@@ -1,0 +1,13 @@
+{
+  "name": "@dino-safari/module-07-node-tools",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Module 7 — Park Operations Center: files, HTTP, streams",
+  "scripts": {
+    "test": "vitest run --root .",
+    "demo:fs": "node demo/01-filesystem.js",
+    "demo:http": "node demo/02-http-server.js",
+    "demo:streams": "node demo/03-streams.js"
+  }
+}

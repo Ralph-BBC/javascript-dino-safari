@@ -1,0 +1,37 @@
+{
+  "name": "dinosaur-safari-javascript-with-node",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Dinosaur Safari: JavaScript with Node — 2-day course materials (pnpm monorepo)",
+  "author": "Nicholas Johnson",
+  "license": "UNLICENSED",
+  "packageManager": "pnpm@10.8.0",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:module": "vitest run --dir",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "slides:01": "pnpm --filter @dino-safari/module-01-slides dev",
+    "slides:02": "pnpm --filter @dino-safari/module-02-slides dev",
+    "slides:03": "pnpm --filter @dino-safari/module-03-slides dev",
+    "slides:04": "pnpm --filter @dino-safari/module-04-slides dev",
+    "slides:05": "pnpm --filter @dino-safari/module-05-slides dev",
+    "slides:06": "pnpm --filter @dino-safari/module-06-slides dev",
+    "slides:07": "pnpm --filter @dino-safari/module-07-slides dev",
+    "slides:08": "pnpm --filter @dino-safari/module-08-slides dev"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.15.0",
+    "eslint": "^9.15.0",
+    "globals": "^15.12.0",
+    "prettier": "^3.4.2",
+    "vitest": "^2.1.6"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

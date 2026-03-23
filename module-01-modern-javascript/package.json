@@ -1,0 +1,13 @@
+{
+  "name": "@dino-safari/module-01-modern-javascript",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Module 1 — Setting Up Base Camp: ESM, tooling, Vitest, linting, debugging",
+  "scripts": {
+    "test": "vitest run --root .",
+    "demo:esm": "node demo/01-esm-workflow.js",
+    "demo:syntax": "node demo/02-modern-syntax.js",
+    "demo:debug": "node --inspect demo/03-debugging.js"
+  }
+}
