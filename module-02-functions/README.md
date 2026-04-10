@@ -10,12 +10,22 @@
 - Know when **`this`** is lost (callbacks) and fix with arrows, wrappers, or `bind`.
 - Design **clean module APIs** with named vs default exports.
 
+## Instructor Notes
+
+- **Lexical scope**: blocks, functions, and what inner functions “see” — contrast with no block scope in `var` if the room needs the history.
+- **Closures**: captured variables, factories, and why each closure instance has its own state (link to zone tracker / ranger logbook metaphor).
+- **Private state**: closure-held fields vs `WeakMap` (mention as alternative; exercises use closures).
+- **Partial application**: fixing the first arguments of a function, relation to currying (light — avoid FP rabbit hole unless asked).
+- **`this` rules**: method call vs bare function vs callback; where `this` is `undefined` (strict) or the global object (legacy).
+- **Fixing `this`**: arrow functions, lexical `self`, `.bind`, wrapping in a method — trade-offs for readability and testability.
+- **ESM API design**: named vs default exports, keeping module surfaces small and intention-revealing (demo `03-module-design`).
+
 ## Demos
 
 ```bash
-node module-02-functions/demo/01-closures.js
-node module-02-functions/demo/02-this-rules.js
-node module-02-functions/demo/03-module-design.js
+node module-02-functions/demo/01-closures
+node module-02-functions/demo/02-this-rules
+node module-02-functions/demo/03-module-design
 ```
 
 ## Exercises

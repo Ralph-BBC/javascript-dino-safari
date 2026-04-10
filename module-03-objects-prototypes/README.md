@@ -8,12 +8,22 @@
 - Use **`Map`** / **`Set`** when object keys or uniqueness semantics matter.
 - Prefer **composition** for mixed capabilities vs deep inheritance trees.
 
+## Instructor Notes
+
+- **Prototype chain**: `[[Prototype]]`, property lookup, shadowing — draw a short diagram on the board.
+- **`Object.create` / constructors** vs `class` sugar: what `class` desugars to, and why the exercise stays prototype-only.
+- **When inheritance gets deep**: maintenance cost; pivot to composition early.
+- **`Map` vs plain objects**: non-string keys, intentional key semantics, frequent add/remove — object string-key rules live in **Module 6 / exercise `01-object-literals`**.
+- **`Set`**: uniqueness, deduping IDs or tags — tie to registry exercises.
+- **Composition / mixins**: demo `03-composition` (spread only); demo `05-composition-destructuring` (factory args, defaults, nested destructure); tie to exercise `withSwim` / `withFly`.
+
 ## Demos
 
 ```bash
-node module-03-objects-prototypes/demo/01-prototype-chain.js
-node module-03-objects-prototypes/demo/02-maps-and-sets.js
-node module-03-objects-prototypes/demo/03-composition.js
+node module-03-objects-prototypes/demo/01-prototype-chain
+node module-03-objects-prototypes/demo/02-maps-and-sets
+node module-03-objects-prototypes/demo/03-composition
+node module-03-objects-prototypes/demo/05-composition-destructuring
 ```
 
 ## Exercises

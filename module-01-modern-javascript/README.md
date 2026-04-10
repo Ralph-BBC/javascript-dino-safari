@@ -10,20 +10,34 @@
 - Apply **modern syntax**: destructuring, spread/rest, optional chaining, nullish coalescing, template literals.
 - Debug Node with **`node --inspect`** and your editor.
 
+## Instructor Notes
+
+- Why **ESM** in Node: `"type": "module"`, `import` / `export` forms, and how the repo root + workspace packages fit together.
+- **`package.json` scripts**: what `pnpm run` executes, passing args, and wiring `test` / `lint` for a small package.
+- **Vitest basics**: `describe` / `it` / `expect`, reading failures, running one test file vs a whole `exercises/` folder.
+- **Syntax fundamentals** (demo `02-syntax-fundamentals`): `const` / `let`, `for...of`, `for`, `while`, `console.log` — optional warm-up before ESM demos.
+- **Package scripts** (demo `03-package-scripts`): `npm init`, adding scripts, `pnpm run`, why `start` / `test` are special.
+- **Modern syntax** (tie to demo `05-modern-syntax`): destructuring, rest/spread, optional chaining, nullish coalescing, template literals — when each reduces bugs vs noise.
+- **Debugging**: `node --inspect`, attaching from the editor or Chrome (`chrome://inspect`), breakpoints vs `console.log`.
+- **ESLint / Prettier** (if you cover tooling live): flat config at repo root, why CI and local lint stay aligned.
+
 ## Demos
 
 From the repo root:
 
 ```bash
-node module-01-modern-javascript/demo/01-esm-workflow.js
-node module-01-modern-javascript/demo/02-modern-syntax.js
-node module-01-modern-javascript/demo/03-debugging.js
+node module-01-modern-javascript/demo/01-hello-world
+node module-01-modern-javascript/demo/02-syntax-fundamentals
+node module-01-modern-javascript/demo/03-package-scripts
+node module-01-modern-javascript/demo/04-esm-workflow
+node module-01-modern-javascript/demo/05-modern-syntax
+node module-01-modern-javascript/demo/06-debugging
 ```
 
-Try debugging demo 3:
+Try debugging demo 6:
 
 ```bash
-node --inspect module-01-modern-javascript/demo/03-debugging.js
+node --inspect module-01-modern-javascript/demo/06-debugging
 ```
 
 ## Exercises

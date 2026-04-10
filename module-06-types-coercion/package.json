@@ -1,0 +1,13 @@
+{
+  "name": "@dino-safari/module-06-types-coercion",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Module 6 — Sensor Glitches: types, coercion, numbers, edge cases",
+  "scripts": {
+    "test": "vitest run --root .",
+    "demo:coercion": "node demo/01-coercion-traps",
+    "demo:numbers": "node demo/02-number-gotchas",
+    "demo:edges": "node demo/03-edge-cases"
+  }
+}

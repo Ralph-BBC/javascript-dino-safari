@@ -92,7 +92,7 @@ export default function briefing() {
   "scripts": {
     "test": "vitest run",
     "lint": "eslint .",
-    "demo:esm": "node demo/01-esm-workflow.js"
+    "demo:esm": "node demo/04-esm-workflow"
   }
 }`,
       highlights: [

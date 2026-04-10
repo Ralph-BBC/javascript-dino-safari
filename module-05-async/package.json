@@ -6,8 +6,8 @@
   "description": "Module 5 — Live Tracking Network: promises, async/await, concurrency",
   "scripts": {
     "test": "vitest run --root .",
-    "demo:promises": "node demo/01-promise-fundamentals.js",
-    "demo:concurrency": "node demo/02-concurrency-patterns.js",
-    "demo:eventloop": "node demo/03-event-loop.js"
+    "demo:promises": "node demo/01-promise-fundamentals",
+    "demo:concurrency": "node demo/02-concurrency-patterns",
+    "demo:eventloop": "node demo/03-event-loop"
   }
 }

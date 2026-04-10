@@ -6,8 +6,11 @@
   "description": "Module 1 — Setting Up Base Camp: ESM, tooling, Vitest, linting, debugging",
   "scripts": {
     "test": "vitest run --root .",
-    "demo:esm": "node demo/01-esm-workflow.js",
-    "demo:syntax": "node demo/02-modern-syntax.js",
-    "demo:debug": "node --inspect demo/03-debugging.js"
+    "demo:hello": "node demo/01-hello-world",
+    "demo:fundamentals": "node demo/02-syntax-fundamentals",
+    "demo:scripts": "node demo/03-package-scripts",
+    "demo:esm": "node demo/04-esm-workflow",
+    "demo:syntax": "node demo/05-modern-syntax",
+    "demo:debug": "node --inspect demo/06-debugging"
   }
 }
