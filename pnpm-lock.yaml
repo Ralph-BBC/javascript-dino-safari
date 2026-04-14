@@ -24,7 +24,11 @@ importers:
         specifier: ^2.1.6
         version: 2.1.9(lightningcss@1.32.0)
 
-  module-01-modern-javascript: {}
+  module-01-modern-javascript:
+    dependencies:
+      picocolors:
+        specifier: ^1.1.1
+        version: 1.1.1
 
   module-01-modern-javascript/slides:
     dependencies:
@@ -84,9 +88,9 @@ importers:
         specifier: ^6.0.3
         version: 6.4.1(jiti@2.6.1)(lightningcss@1.32.0)
 
-  module-03-objects-prototypes: {}
+  module-03-closures: {}
 
-  module-03-objects-prototypes/slides:
+  module-03-closures/slides:
     dependencies:
       react:
         specifier: ^18.3.1
@@ -114,9 +118,9 @@ importers:
         specifier: ^6.0.3
         version: 6.4.1(jiti@2.6.1)(lightningcss@1.32.0)
 
-  module-06-types-coercion: {}
+  module-04-js-gotchas: {}
 
-  module-06-types-coercion/slides:
+  module-04-js-gotchas/slides:
     dependencies:
       react:
         specifier: ^18.3.1
@@ -144,9 +148,9 @@ importers:
         specifier: ^6.0.3
         version: 6.4.1(jiti@2.6.1)(lightningcss@1.32.0)
 
-  module-05-async: {}
+  module-05-objects-prototypes: {}
 
-  module-05-async/slides:
+  module-05-objects-prototypes/slides:
     dependencies:
       react:
         specifier: ^18.3.1
@@ -174,9 +178,9 @@ importers:
         specifier: ^6.0.3
         version: 6.4.1(jiti@2.6.1)(lightningcss@1.32.0)
 
-  module-04-functional: {}
+  module-06-async: {}
 
-  module-04-functional/slides:
+  module-06-async/slides:
     dependencies:
       react:
         specifier: ^18.3.1

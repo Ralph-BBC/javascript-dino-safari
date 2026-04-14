@@ -31,7 +31,7 @@ node module-08-code-organisation/demo/03-error-handling
 
 | Folder | Mission |
 | ------ | ------- |
-| [`exercises/01-refactor-spaghetti`](exercises/01-refactor-spaghetti/) | Split a monolith into cohesive modules. |
+| [`exercises/01-split-modules`](exercises/01-split-modules/) | Split a monolith into cohesive modules. |
 | [`exercises/02-error-config`](exercises/02-error-config/) | Typed errors + env config + log boundaries. |
 
 ```bash

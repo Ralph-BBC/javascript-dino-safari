@@ -1,0 +1,14 @@
+{
+  "name": "@dino-safari/module-04-js-gotchas",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Module 4 — JS Gotchas: coercion, truthiness, equality, numbers, and the weird parts",
+  "scripts": {
+    "test": "vitest run --root .",
+    "demo:coercion": "node demo/01-coercion-traps",
+    "demo:truthy": "node demo/02-truthy-falsy",
+    "demo:numbers": "node demo/03-number-gotchas",
+    "demo:edges": "node demo/04-edge-cases"
+  }
+}

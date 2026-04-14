@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Module 2 — Tracking Stations: scope, closures, this, modules",
+  "description": "Module 2 — Functions, arrows, and functional loops",
   "scripts": {
     "test": "vitest run --root .",
-    "demo:closures": "node demo/01-closures",
-    "demo:this": "node demo/02-this-rules",
-    "demo:modules": "node demo/03-module-design"
+    "demo:basics": "node demo/01-function-basics",
+    "demo:pipelines": "node demo/02-pipelines"
   }
 }

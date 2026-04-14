@@ -34,8 +34,8 @@ Press `Ctrl+C` to stop the HTTP demo if it keeps running (or run with a short ti
 
 | Folder | Mission |
 | ------ | ------- |
-| [`exercises/01-sighting-logger`](exercises/01-sighting-logger/) | Append + read NDJSON logs. |
-| [`exercises/02-dino-api`](exercises/02-dino-api/) | Minimal HTTP JSON server. |
+| [`exercises/01-file-io-ndjson`](exercises/01-file-io-ndjson/) | Append + read NDJSON logs. |
+| [`exercises/02-http-json-server`](exercises/02-http-json-server/) | Minimal HTTP JSON server. |
 | [`exercises/03-stream-processor`](exercises/03-stream-processor/) | Transform stream over CSV. |
 
 ```bash

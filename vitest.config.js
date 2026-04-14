@@ -8,7 +8,7 @@ export default defineConfig({
   test: {
     globals: false,
     environment: 'node',
-    include: ['**/exercises/**/*.test.js'],
+    include: ['**/exercises/**/*.test.js', '**/demo/**/*.test.js'],
     exclude: ['**/node_modules/**'],
     coverage: {
       provider: 'v8',

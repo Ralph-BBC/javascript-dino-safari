@@ -92,7 +92,7 @@ export default function briefing() {
   "scripts": {
     "test": "vitest run",
     "lint": "eslint .",
-    "demo:esm": "node demo/04-esm-workflow"
+    "demo:esm": "node demo/03-esm-basics"
   }
 }`,
       highlights: [
@@ -161,7 +161,7 @@ const ping = dino?.lastSeen ?? 'no recent ping';`,
       points: [
         '`node --inspect path/to/script.js` then attach Chrome or your IDE.',
         'Breakpoints > `console.log` when state is complex.',
-        'Demo 03 has an intentional bug — practice stepping through loops.',
+        'Demo 06 has an intentional bug — practice stepping through loops.',
       ],
     },
   },
@@ -194,8 +194,8 @@ const ping = dino?.lastSeen ?? 'no recent ping';`,
       title: 'Exercises — Base Camp missions',
       points: [
         '01 — Package scripts for the mini tracker',
-        '02 — Modern syntax refactor',
-        '03 — First Vitest: `formatSighting`',
+        '02 — Vitest contract: `formatSighting`',
+        '03 — ESM imports: Node built-in, npm, local module',
       ],
     },
   },
