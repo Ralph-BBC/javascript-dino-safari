@@ -1,0 +1,9 @@
+{
+  "name": "@dino-safari/demo-debugging",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node .",
+    "debug": "node --inspect-brk ."
+  }
+}

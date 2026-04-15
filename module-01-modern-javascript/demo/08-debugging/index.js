@@ -1,43 +1,33 @@
 /**
- * Demo: Intentionally buggy tracker - use node --inspect and breakpoints.
+ * Demo: Intentionally buggy code — use the debugger to find the problem.
  *
- * Run normally (you'll see a wrong average):
- *   node module-01-modern-javascript/demo/06-debugging
+ * Run normally (you'll see a wrong answer):
+ *   node module-01-modern-javascript/demo/08-debugging
  *
- * Run with the debugger paused on the first line:
- *   node --inspect-brk module-01-modern-javascript/demo/06-debugging
+ * Run with the debugger:
+ *   node --inspect-brk module-01-modern-javascript/demo/08-debugging
  *
- * Then attach via Chrome (chrome://inspect) or your editor's debugger.
- * Set a breakpoint inside the loop in averageWeightKg, step through, and
- * find the bug: <= should be <, so the last iteration reads undefined.
+ * Attach via Chrome (chrome://inspect) or your editor's debugger.
+ * Set a breakpoint inside the loop, step through, and find the bug.
  */
-import { readFileSync } from 'node:fs';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const dinosaurs = JSON.parse(
-  readFileSync(path.join(__dirname, '../../../data/dinosaurs.json'), 'utf8'),
-);
+const weights = [120, 450, 80, 3200, 60];
 
-function averageWeightKg(list) {
+function averageWeight(list) {
   let total = 0;
-  // BUG: off-by-one / wrong loop bound - students should catch this while stepping
+
+  // BUG: <= should be <  — the last iteration reads undefined
   for (let i = 0; i <= list.length; i++) {
-    total += list[i]?.weightKg ?? 0;
+    total = total + list[i];
   }
+
   return total / list.length;
 }
 
-function findHeaviestCarnivore(list) {
-  return list
-    .filter((d) => d.diet === 'carnivore')
-    .reduce((best, d) => (d.weightKg > (best?.weightKg ?? 0) ? d : best), null);
-}
+const avg = averageWeight(weights);
 
-const avg = averageWeightKg(dinosaurs);
-const apex = findHeaviestCarnivore(dinosaurs);
-
-console.log('\n--- Debugging demo (expect wrong average!) ---\n');
-console.log('Reported average weight (kg):', avg.toFixed(2));
-console.log('Heaviest carnivore:', apex?.name, `(${apex?.species})`);
+console.log('\n--- Debugging demo ---\n');
+console.log('Weights:', weights);
+console.log('Expected average:', (120 + 450 + 80 + 3200 + 60) / 5);
+console.log('Reported average:', avg);
+console.log('\nSomething is wrong — use the debugger to find the bug!\n');
