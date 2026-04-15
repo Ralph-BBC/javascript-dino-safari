@@ -1,14 +1,28 @@
-# Exercise - Filter
+# Exercise 01 - Filter
 
-**Mission briefing:** Use `.filter()` to select elements from arrays - first numbers, then objects.
+## The scenario
 
-## Tasks
+The park's monitoring system collects huge arrays of raw data — sensor readings, zone rosters, dinosaur records. Most of the time you only care about a subset: the even-numbered readings, the IDs that appear in two overlapping patrol lists, or the dinosaurs dangerous enough to warrant a lockdown.
 
-Implement in [`starter/index.js`](starter/index.js):
+You'll use `.filter()` to write three functions that select elements from arrays — starting with plain numbers and working up to objects.
 
-1. **`keepEvens(numbers)`** - return only the even numbers.
-2. **`overlap(a, b)`** - given two arrays of numbers, return elements that appear in both.
-3. **`getDangerous(dinos)`** - given `{ species, zone, dangerLevel }[]`, return dinos where `dangerLevel > 5`.
+## What you will build
+
+All functions live in [`starter/filters.js`](starter/filters.js).
+
+| Function | Description | Example |
+|---|---|---|
+| `keepEvens(numbers)` | Return only the even numbers | `keepEvens([1,2,3,4])` → `[2,4]` |
+| `overlap(a, b)` | Return elements from `a` that also appear in `b` | `overlap([1,2,3], [3,4])` → `[3]` |
+| `getDangerous(dinos)` | Return dinos where `dangerLevel > 5` | Filters an array of `{ species, zone, dangerLevel }` |
+
+## Getting started
+
+Open [`starter/filters.js`](starter/filters.js). Each function is stubbed — replace the body with a single `.filter()` call. Then run the demo:
+
+```bash
+node starter/index.js
+```
 
 ## Verify
 
@@ -16,4 +30,14 @@ Implement in [`starter/index.js`](starter/index.js):
 cd starter && pnpm install && pnpm test
 ```
 
-Reference: [`solution/index.js`](solution/index.js).
+The tests check empty arrays, all-odd input, no-overlap cases, and a mixed roster of safe and dangerous dinos.
+
+## Hints
+
+- `n % 2 === 0` tests whether a number is even.
+- `b.includes(n)` checks if `n` exists in array `b`.
+- The callback you pass to `.filter()` receives each element — return `true` to keep it, `false` to drop it.
+
+## Reference solution
+
+[`solution/filters.js`](solution/filters.js)

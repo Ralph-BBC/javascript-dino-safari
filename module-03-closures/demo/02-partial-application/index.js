@@ -1,5 +1,5 @@
 /**
- * Demo: Partial application and currying - closures that remember config.
+ * Demo: Partial application - closures that remember config.
  * Run: node module-03-closures/demo/02-partial-application
  */
 
@@ -27,18 +27,5 @@ const ridgeCritical = createTaggedLogger('RIDGE', critical);
 
 console.log('\n' + lagoonWarn('Mosasaurus near surface'));
 console.log(ridgeCritical('Raptor pack moving east'));
-
-// --- 3. Currying - transform f(a, b) into f(a)(b) ---
-function curry(fn) {
-  return (a) => (b) => fn(a, b);
-}
-
-const formatSighting = (zone, name) => `${name} spotted in ${zone}`;
-const curriedSighting = curry(formatSighting);
-
-const inValley = curriedSighting('Cretaceous Valley');
-console.log('\n' + inValley('Rex'));
-console.log(inValley('Compy'));
-console.log(curriedSighting('Raptor Ridge')('Blue'));
 
 console.log();

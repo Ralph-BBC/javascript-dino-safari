@@ -1,15 +1,56 @@
-# Capstone - Alert Pipeline
+# Capstone 02 - Alert Pipeline
 
-**Mission briefing:** Sensor alerts arrive messy — some invalid, some duplicated. Build a composable pipeline that validates, normalises, deduplicates, and categorises them. This exercise combines closures, higher-order functions, map/filter, immutability, and module organisation.
+## The scenario
 
-## Files to implement
+Sensor alerts arrive messy — some have missing fields, others have whitespace in zone names, and duplicates flood in when sensors fire multiple times for the same event. Before alerts reach the control room they need to pass through a pipeline that validates, normalises, deduplicates, and categorises them.
 
-| File | Responsibility |
-|---|---|
-| `validate.js` | `validateAlert` — check required fields and ranges |
-| `normalise.js` | `normaliseAlert` — trim, lowercase, add id (immutable) |
-| `deduplicate.js` | `createDeduplicator` — closure over a Set, returns filter function |
-| `pipeline.js` | `processAlerts` — wire the steps together, categorise results |
+This exercise combines closures (the deduplicator), higher-order functions (filter/map), immutability (normalise returns new objects), and module organisation (each step in its own file).
+
+## What you will build
+
+### [`starter/validate.js`](starter/validate.js) — Validation
+
+**`validateAlert(alert)`** — return `true` if the alert is valid:
+
+- `zone` must be a non-empty string (after trimming whitespace)
+- `level` must be an integer between 1 and 5 inclusive
+- `timestamp` must be a positive number
+
+### [`starter/normalise.js`](starter/normalise.js) — Normalisation
+
+**`normaliseAlert(alert)`** — return a **new** object (don't mutate the original):
+
+- `zone`: trimmed and lowercased
+- `level` and `timestamp`: copied as-is
+- `id`: `"<normalised zone>-<timestamp>"` (used for deduplication)
+
+```js
+normaliseAlert({ zone: '  East Wing  ', level: 2, timestamp: 99 });
+// { zone: 'east wing', level: 2, timestamp: 99, id: 'east wing-99' }
+```
+
+### [`starter/deduplicate.js`](starter/deduplicate.js) — Deduplication (closure)
+
+**`createDeduplicator()`** — return a **filter function** that uses a closure over a `Set`. The first time it sees an `id`, return `true` (keep). On subsequent calls with the same `id`, return `false` (drop).
+
+### [`starter/pipeline.js`](starter/pipeline.js) — Composing the pipeline
+
+**`processAlerts(rawAlerts)`** — wire the steps together:
+
+1. **Filter** with `validateAlert`
+2. **Map** with `normaliseAlert`
+3. **Filter** with a fresh deduplicator
+4. **Categorise**: `level >= 4` → `critical`, `level >= 2` → `warning`, else → `info`
+
+Return `{ critical, warning, info, total }` where `total` is the count of unique valid alerts.
+
+## Getting started
+
+Implement each file one at a time — the tests cover each step independently so you can work through them progressively. Then run:
+
+```bash
+node starter/index.js
+```
 
 ## Verify
 
@@ -17,4 +58,15 @@
 cd starter && pnpm install && pnpm test
 ```
 
-Reference: `solution/` folder.
+The tests check validation edge cases (whitespace-only zone, float levels, zero timestamp), normalisation immutability, deduplicator state, and the full end-to-end pipeline with a fixture of 6 raw alerts.
+
+## Hints
+
+- `typeof zone !== 'string' || zone.trim() === ''` catches missing and blank zones.
+- `Number.isInteger(level) && level >= 1 && level <= 5` validates the level.
+- The deduplicator is a classic closure pattern: `const seen = new Set()` captured by the returned function.
+- In `processAlerts`, chain `.filter(validateAlert).map(normaliseAlert).filter(dedupe)` for a clean pipeline.
+
+## Reference solution
+
+[`solution/`](solution/) folder

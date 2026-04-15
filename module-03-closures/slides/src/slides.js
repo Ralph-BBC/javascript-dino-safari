@@ -10,14 +10,16 @@ export const slides = [
   {
     type: 'welcome',
     content: {
-      title: 'Functions that remember',
+      title: 'What we will cover',
       points: [
-        'A closure captures variables from its creation scope.',
-        'Use closures for private state, factories, and pre-configured functions.',
-        'Immutability protects shared data from action-at-a-distance bugs.',
+        'Closures - functions that remember their creation scope',
+        'Partial application - pre-filling arguments to create specialised functions',
+        'Currying - transforming f(a, b) into f(a)(b)',
+        'Immutability - protecting data from accidental mutation',
       ],
     },
   },
+
   {
     type: 'code',
     content: {
@@ -124,6 +126,30 @@ sighting('Ridge')('Stego');  // "Stego spotted in Ridge"`,
   {
     type: 'code',
     content: {
+      title: 'Currying - practical uses',
+      code: `const curry = (fn) => (a) => (b) => fn(a, b);
+
+// Curried comparison - reusable threshold checkers
+const gt = curry((threshold, value) => value > threshold);
+const isDangerous = gt(3);
+const isHeavy     = gt(5000);
+
+dinos.filter(d => isDangerous(d.dangerLevel));
+dinos.filter(d => isHeavy(d.weightKg));
+
+// Curried property accessor
+const prop    = curry((key, obj) => obj[key]);
+const getName = prop('name');
+dinos.map(getName);  // ['Rex', 'Compy', 'Raptor']`,
+      highlights: [
+        'Curried helpers slot straight into filter/map with no wrapper arrow needed',
+        'Fix the "what" once, then apply it across many values',
+      ],
+    },
+  },
+  {
+    type: 'code',
+    content: {
       title: 'The mutation trap',
       code: `const rex = { name: 'Rex', zone: 'Valley', dangerLevel: 4 };
 
@@ -160,51 +186,7 @@ const more  = [...dinos, 'Echo'];  // new array`,
       ],
     },
   },
-  {
-    type: 'comparison',
-    content: {
-      title: 'Spread vs structuredClone',
-      left: {
-        label: 'Spread',
-        items: [
-          'Fast for flat records',
-          'Shallow - nested objects still shared',
-          '`{ ...obj, field: newValue }`',
-        ],
-      },
-      right: {
-        label: 'structuredClone',
-        items: [
-          'Deep clone - nested objects fully copied',
-          'Slower, but safe for complex data',
-          '`structuredClone(obj)`',
-        ],
-      },
-    },
-  },
-  {
-    type: 'rules',
-    content: {
-      title: 'Field rules - Module 3',
-      rules: [
-        {
-          rule: 'Prefer factories for private state',
-          example: 'Closures beat global variables every time.',
-          icon: 'lock',
-        },
-        {
-          rule: 'Copy before you change',
-          example: 'Especially shared dino records from HQ.',
-          icon: 'clipboard',
-        },
-        {
-          rule: 'Curry measured, not dogmatic',
-          example: 'If both args are always known, just pass them.',
-          icon: 'target',
-        },
-      ],
-    },
-  },
+
   {
     type: 'welcome',
     content: {
@@ -212,7 +194,8 @@ const more  = [...dinos, 'Echo'];  // new array`,
       points: [
         '01 - Zone tracker factory (closures)',
         '02 - Partial application for alert loggers',
-        '03 - Immutable record updates',
+        '03 - Curried utility helpers (currying)',
+        '04 - Immutable record updates',
       ],
     },
   },

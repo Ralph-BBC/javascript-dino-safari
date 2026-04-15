@@ -1,19 +1,44 @@
-# Exercise - Minimal Dino HTTP API
+# Exercise 02 - Minimal Dino HTTP API
 
-**Mission briefing:** Expose read-only dinosaur data over **`http.createServer`** with JSON responses.
+## The scenario
 
-## Tasks
+The park needs a read-only API so the mobile ranger app can query dinosaur data. No frameworks — just Node's built-in `http` module. You'll build a tiny server factory that accepts a list of dinosaurs and exposes them over three routes, all returning JSON.
 
-Implement `createDinoApiServer({ dinosaurs })` in [`starter/index.js`](starter/index.js) returning an `http.Server` instance (do **not** call `listen` inside the factory - tests will bind a port).
+The factory returns an `http.Server` instance but does **not** call `.listen()` — the tests bind their own port so they can run in parallel without conflicts.
 
-Routes:
+## What you will build
 
-- `GET /health` → **200** `{"ok":true}` with `Content-Type: application/json`.
-- `GET /dinosaurs` → **200** JSON array of all dinosaurs passed in.
-- `GET /dinosaurs/<trackingId>` → **200** single record if found; **404** JSON `{"error":"not_found"}` if missing.
-- Anything else → **404** JSON `{"error":"not_found"}`.
+### `createDinoApiServer({ dinosaurs })` — in [`starter/server.js`](starter/server.js)
 
-Use only built-in modules (`node:http`, `node:url`, etc.).
+Returns an `http.Server` with the following routes:
+
+| Method | Path | Response |
+|---|---|---|
+| GET | `/health` | **200** — `{ "ok": true }` |
+| GET | `/dinosaurs` | **200** — JSON array of all dinosaurs |
+| GET | `/dinosaurs/<trackingId>` | **200** — single dinosaur record if found |
+| GET | `/dinosaurs/<trackingId>` | **404** — `{ "error": "not_found" }` if no match |
+| *anything else* | *any path* | **404** — `{ "error": "not_found" }` |
+
+All responses must have `Content-Type: application/json`.
+
+Each dinosaur has at least a `trackingId` property used for the detail lookup.
+
+```js
+const dinosaurs = [
+  { trackingId: 'TRX-001', name: 'Rexy', species: 'T-Rex' },
+  { trackingId: 'VLR-042', name: 'Blue', species: 'Velociraptor' },
+];
+const server = createDinoApiServer({ dinosaurs });
+```
+
+## Getting started
+
+Open [`starter/server.js`](starter/server.js). The stub returns a server that responds 500 to everything — replace the handler. Then run:
+
+```bash
+node starter/index.js
+```
 
 ## Verify
 
@@ -21,4 +46,15 @@ Use only built-in modules (`node:http`, `node:url`, etc.).
 cd starter && pnpm install && pnpm test
 ```
 
-Reference: [`solution/index.js`](solution/index.js).
+The test starts the server on a random port, hits all four route cases, and checks status codes and JSON bodies.
+
+## Hints
+
+- Parse the URL with `new URL(req.url, 'http://127.0.0.1')`, then split `pathname` on `/` to get route segments.
+- A helper function like `sendJson(res, status, body)` keeps the handler clean: `res.writeHead(status, { 'Content-Type': 'application/json' })` then `res.end(JSON.stringify(body))`.
+- Use a `Map` keyed by `trackingId` for O(1) lookups on the detail route.
+- Only use built-in modules (`node:http`, `node:url`).
+
+## Reference solution
+
+[`solution/server.js`](solution/server.js)

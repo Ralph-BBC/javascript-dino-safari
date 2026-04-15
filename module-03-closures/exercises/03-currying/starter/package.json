@@ -1,0 +1,13 @@
+{
+  "name": "@dino-safari/03-currying",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "lint": "eslint .",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "vitest": "^2.1.6"
+  }
+}

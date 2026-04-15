@@ -1,6 +1,6 @@
 /**
  * Demo: Immutability - spread vs structuredClone, don't-mutate-inputs.
- * Run: node module-03-closures/demo/03-immutability
+ * Run: node module-03-closures/demo/04-immutability
  */
 const dino = { name: 'Rex', vitals: { weightKg: 8000 } };
 
