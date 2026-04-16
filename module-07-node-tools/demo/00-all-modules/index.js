@@ -1,18 +1,6 @@
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-import { mkdir, appendFile, readFile, rm } from 'node:fs/promises';
-import { readFileSync, createReadStream, createWriteStream } from 'node:fs';
-import { createServer } from 'node:http';
-import { pipeline } from 'node:stream/promises';
-import { Transform } from 'node:stream';
-import { createInterface } from 'node:readline';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const scratch = path.join(__dirname, '.scratch');
-
 // ── 1. node:path ─────────────────────────────────────────────────────
+import path from 'node:path';
+
 console.log('\n--- 1. node:path ---');
 
 const sample = path.join('data', 'logs', 'sightings.ndjson');
@@ -23,7 +11,12 @@ console.log('basename  :', path.basename(sample));
 console.log('extname   :', path.extname(sample));
 
 // ── 2. node:url ──────────────────────────────────────────────────────
+import { fileURLToPath } from 'node:url';
+
 console.log('\n--- 2. node:url ---');
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 console.log('import.meta.url :', import.meta.url);
 console.log('__filename      :', __filename);
@@ -34,8 +27,11 @@ console.log('pathname        :', url.pathname);
 console.log('searchParams    :', Object.fromEntries(url.searchParams));
 
 // ── 3. node:fs/promises ──────────────────────────────────────────────
+import { mkdir, appendFile, readFile, rm } from 'node:fs/promises';
+
 console.log('\n--- 3. node:fs/promises ---');
 
+const scratch = path.join(__dirname, '.scratch');
 await mkdir(scratch, { recursive: true });
 console.log('created scratch dir:', scratch);
 
@@ -54,6 +50,8 @@ const records = text.trim().split('\n').map(JSON.parse);
 console.log('read back:', records);
 
 // ── 4. node:fs (sync) ───────────────────────────────────────────────
+import { readFileSync, createReadStream, createWriteStream } from 'node:fs';
+
 console.log('\n--- 4. node:fs (sync at startup) ---');
 
 const dinoPath = path.join(__dirname, '../../../data/dinosaurs.json');
@@ -62,6 +60,8 @@ console.log('loaded', dinosaurs.length, 'dinosaurs (sync)');
 console.log('first:', dinosaurs[0].name, '-', dinosaurs[0].species);
 
 // ── 5. node:http ─────────────────────────────────────────────────────
+import { createServer } from 'node:http';
+
 console.log('\n--- 5. node:http ---');
 
 const server = createServer((req, res) => {
@@ -86,6 +86,9 @@ server.close();
 console.log('server closed');
 
 // ── 6. node:stream ──────────────────────────────────────────────────
+import { pipeline } from 'node:stream/promises';
+import { Transform } from 'node:stream';
+
 console.log('\n--- 6. node:stream ---');
 
 const upperPath = path.join(scratch, 'sightings-upper.ndjson');
@@ -105,6 +108,8 @@ console.log('pipeline complete → uppercased file written');
 console.log('contents:', await readFile(upperPath, 'utf8'));
 
 // ── 7. node:readline ────────────────────────────────────────────────
+import { createInterface } from 'node:readline';
+
 console.log('--- 7. node:readline ---');
 
 const rl = createInterface({
